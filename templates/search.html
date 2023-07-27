@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-2">
+    <div class="col-12 row">
+        {% if destinations %}
+            {% for destination in destinations %}
+            <div class="col-4 mb-3">
+                <div class="card ">
+                    <div class="card-header bg-primary text-white">
+                        <p class="text-center card-title">{{ destination.title }}</p>
+                    </div>
+                    <div class="card-body">
+                        <img src="{{ destination.image.url }}" alt="{{ destination.title }}" style="width:100px; height:auto;" class="img-flex d-flex">
+                        <p class="mt-1" >{{ destination.description|truncatewords:21 }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'destination_detail' destination.id %}" class="btn col-12 btn-warning btn-block ">Continue</a>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+        {% else %}
+            <h3>{{ message }}</h3>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

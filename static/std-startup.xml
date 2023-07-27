@@ -1,0 +1,72 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- Categories -->
+<category>
+    <pattern>HELLO</pattern>
+    <template>Well, hello!</template>
+</category>
+<category>
+    <pattern>HI</pattern>
+    <template>Hello! How can I assist you today?</template>
+</category>
+<category>
+    <pattern>DO YOU WANT *</pattern>
+    <template>Please, contact our phone number 08123456789 for detailed information.</template>
+</category>
+
+<category>
+    <pattern>GOOD MORNING</pattern>
+    <template>Good morning! How can I assist you today?</template>
+</category>
+<category>
+    <pattern>GOOD AFTERNOON</pattern>
+    <template>Good afternoon! How can I assist you today?</template>
+</category>
+<category>
+    <pattern>GOOD EVENING</pattern>
+    <template>Good evening! How can I assist you today?</template>
+</category>
+<category>
+    <pattern>WHAT ARE YOU</pattern>
+    <template>I'm a bot, powered by Django.</template>
+</category>
+<category>
+    <pattern>WHO ARE YOU</pattern>
+    <template>I'm a bot, powered by Django.</template>
+</category>
+<category>
+    <pattern>WHAT IS YOUR NAME</pattern>
+    <template>I'm a bot, powered by Django.</template>
+</category>
+<category>
+    <pattern>WHAT'S YOUR NAME</pattern>
+    <template>I'm a bot, powered by Django.</template>
+</category>
+<category>
+    <pattern>HELO</pattern>
+    <template>Hello! How can I help you today?</template>
+</category>
+<category>
+    <pattern>HALO</pattern>
+    <template>Hello! How can I help you today?</template>
+</category>
+<category>
+    <pattern>SAMPURASUN</pattern>
+    <template>Mangga mang!</template>
+</category>
+<category>
+    <pattern>HAI</pattern>
+    <template>Halo, apa yang bisa saya bantu?</template>
+</category>
+<category>
+    <pattern>HE</pattern>
+    <template>Halo, apa yang bisa saya bantu?</template>
+</category>
+<category>
+    <pattern>SELAMAT PAGI</pattern>
+    <template>Selamat pagi, ada yang bisa saya bantu?</template>
+</category>
+<category>
+    <pattern>TELL ME ABOUT * LOCATION</pattern>
+    <template>I'm sorry, as an example bot, I don't have specific data about locations. But in a real-world scenario, this input could be used to fetch data about the specified location.</template>
+</category>
+</aiml>

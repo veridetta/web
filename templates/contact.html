@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+    body {
+    background-image: url("{% static 'images/BATU LAWANG.jpg' %}");
+    background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgba(0,0,0,0.6);
+        background-blend-mode: darken;
+    }
+
+</style>
+<div class="container bg-white shadow-md p-5 col-8 mb-3">
+    <h1 class="contact-header">Have a question?</h1>
+    <h1 class="contact-header">Contact us!</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message-item" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br />
+        <div class="send-button">
+            <button type="submit" class="btn btn-dark">Send Message</button>
+            <br />
+        </div>
+    </form>
+    <br>
+</div>
+
+{% endblock content %}
+

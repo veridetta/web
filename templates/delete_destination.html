@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-3 mb-5">
+    {% if user.is_staff or user.is_superuser %}
+    <h2>Delete Destination</h2>
+    <p>Are you sure you want to delete "{{ destination.title }}"?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <br>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'destination_detail' destination.id %}" class="btn btn-primary">Cancel</a>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock content %}

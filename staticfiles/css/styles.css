@@ -1,0 +1,187 @@
+.navbar-nav {
+  margin-left: 0cm;  /* Geser teks ke sebelah kiri */
+  display: flex;
+}
+
+.form-register{
+    background: #f4f7f4aa;
+    border-radius: 20px;
+    width: 500px;
+}
+.form-contact{
+    background: #f4f7f4aa;
+    border-radius: 20px;
+    width: 500px;
+}
+.form-layout{
+  border-radius: 20px;
+  width: 500px;
+
+}
+
+.contact-header {
+    font-family: 'Calibri', sans-serif;
+    font-weight: bold;
+    font-size: 3em;  /* Increase the font size */
+    }
+
+.send-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+        }
+
+.message-item {
+            font-size: 1.17em;  /* Font size for H3 */
+        }
+.overlay {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("{% static 'images/sunset.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px); /* Atur nilai blur sesuai preferensi */
+    z-index: -1;
+  }
+  .search-form {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    width: 28cm; /* Perpanjang lebar search form */
+    margin: 0 auto; /* Tengahkan search form di tengah layar */
+  }
+
+  .form-label {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .search-button {
+    border-radius: 10px;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .form-title {
+    text-align: center;
+    color: white;
+    font-size: 27px;
+    margin-bottom: 20px;
+    letter-spacing: 15px;
+    white-space: nowrap;
+  }
+
+  /* Kode tambahan */
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group .form-control {
+    margin-right: 1cm; /* Geser input ke kanan sepanjang 1 cm */
+  }
+  .navbar {
+    width: 1370px;
+    margin-left: -130px;
+  }
+  .nav-item {
+    color: black;
+  }
+  .navbar-brand {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-shadow: 2px 3px 2px rgb(172, 172, 172);
+  }
+  .nav1 {
+    margin-left: 860px;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+  }
+  .nav2 {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+  }
+  .nav3 {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+  }
+  .nav4 {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+  }
+  .flower-image {
+    margin-left: -90px;
+    border-radius: 20px;
+    width: 900px;
+  }
+  .card-1 {
+    margin-left: 80px;
+    margin-top: 20px;
+
+  }
+  .card-2 {
+    margin-left: 90px;
+    margin-top: 97px;
+  }
+  .card-3 {
+    margin-left:80px;
+    margin-top: 20px;
+  }
+  .card-4 {
+    margin-left: 90px;
+    margin-top: 20px;
+  }
+  .text-1 {
+  margin-top: 50px;
+  margin-left: 80px;
+  white-space: nowrap;
+  font-weight: 500;
+  }
+  .description-text {
+  margin-left: calc(-150px + 2cm);
+  margin-right: calc(-150px + 2cm);
+  font-weight: 600;
+  }
+  .title-text {
+  font-weight: 600;
+  }
+
+  .custom-navbar {
+    margin-left: 130px;
+  }
+  .custom-h1 {
+    color: white;
+    font-size: 5em;
+    margin-top: 80px;
+    margin-left: 90px;
+  }
+.form-contact {
+    width: 500px;
+
+}
+.text-justify {
+    margin-top: 630px;
+    margin-left: 150px;
+    color: white;
+}

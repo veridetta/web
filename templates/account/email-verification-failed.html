@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    body{
+        /* Ubah latar belakang menjadi gambar */
+        background-image: url("{% static '/images/scenic.jpg' %}");
+        background-size: cover;
+        background-position: top;
+    }
+
+    .message-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin-top: -7cm; /* Geser elemen ke atas sejauh 4cm */
+    }
+
+    .transparent-background {
+        background-color: rgba(255, 255, 255, 0.7); /* Putih dengan 70% transparansi */
+        padding: 15px;
+        border-radius: 5px;
+        max-width: 500px; /* Atur lebar maksimum menjadi 500px seperti contoh Anda */
+        width: 100%; /* Mengatur lebar menjadi 100% dari lebar elemen parent-nya */
+        margin: auto;  /* Mengatur margin secara otomatis agar elemen berada di tengah */
+    }
+</style>
+
+<body>
+    <br>
+    <div class="message-wrapper">
+        <div class="transparent-background text-center">
+            <i class="fa fa-check fa-3x text-success" aria-hidden="true"></i>
+            <h5> <strong> Email verification unsuccessful! </strong> </h5>
+            <hr>
+            <p> Kindly reach out to the admin support for assistance. </p>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

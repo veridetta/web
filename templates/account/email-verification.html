@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+Hello,
+
+We appreciate your registration on our website. We kindly request you to verify your email by clicking the link provided below.
+
+https://{{domain}}{% url 'email-verification' uidb64=uid token=token %}
+
+{% endautoescape %}

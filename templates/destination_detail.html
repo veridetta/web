@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_filters %}
+
+{% block content %}
+
+<style>
+    .input-review {
+        width: 100%; /* Menentukan lebar kolom input */
+        height: 200px; /* Menentukan tinggi kolom input */
+        margin-bottom: 10px; /* Menambahkan jarak antara kolom input dan tombol submit */
+    }
+
+    .submit-button {
+        background-color: #4CAF50; /* Warna latar belakang tombol submit */
+        color: white; /* Warna teks tombol submit */
+        padding: 10px 20px; /* Padding di dalam tombol submit */
+        border: none; /* Menghapus border pada tombol submit */
+        cursor: pointer; /* Mengubah cursor saat di atas tombol submit */
+    }
+
+    .submit-button:hover {
+        background-color: #45a049; /* Mengubah warna latar belakang tombol submit saat di-hover */
+    }
+    .fb-share-wrapper {
+        display: flex;
+        justify-content: center;  /* Center horizontally */
+        align-items: center;      /* Center vertically */
+      }
+
+      .custom-fb-share-button {
+        transform: scale(2);  /* Membuat ukuran tombol */
+      }
+
+    </style>
+
+<!-- Messages -->
+{% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+
+<!--Flower Image and Cards-->
+<div class="row">
+    <div class="col-sm-8">
+        <h1 class="mt-3 title-text">{{ destination.title }}</h1>
+        <img src="{{ destination.image.url }}" alt="{{ destination.title }}" class="flower-image mt-4">
+        <p class="mt-4 description-text">{{ destination.description }}</p>
+        <p class="">Category: {{ destination.get_category_display }}</p>
+        <p class="">Budget: {{ destination.get_budget_display }}</p>
+        <p class="">Latitude: {{ destination.latitude }}</p>
+        <p class="">Longitude: {{ destination.longitude }}</p>
+        <!-- Add weather data -->
+        <p class="">Weather: {{ weather_data.weather.0.main }}</p>
+        <p class="">Temperature: {{ weather_data.main.temp|floatformat:2 }}°C</p>
+         <br>
+        <!-- Add video YouTube -->
+        {% if destination.youtube_url %}
+        <div class="col-12">
+            <div class="embed-responsive embed-responsive-16by9">
+              {% if "youtu.be" in destination.youtube_url %}
+                <iframe class="embed-responsive-item col-11" src="{{ destination.youtube_url|replace:'youtu.be,www.youtube.com/embed' }}" style="min-height:430px !important" allowfullscreen></iframe>
+              {% elif "watch?v=" in destination.youtube_url %}
+                <iframe class="embed-responsive-item col-11" src="{{ destination.youtube_url|replace:'watch?v=,embed/' }}"style="min-height:430px !important" allowfullscreen></iframe>
+              {% else %}
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ destination.youtube_url }} col-11"style="min-height:430px !important" allowfullscreen></iframe>
+              {% endif %}
+            </div>
+          </div>
+          
+    {% endif %}
+        <br>
+        <!-- Map Display -->
+        <div class="destination-map" id="destination-map" style="width:800px; height:450px;"></div>
+        <br><br>
+
+        <!-- Add Facebook Share Button here -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="kXj3s9Dk"></script>
+<div class="fb-share-wrapper">
+  <div class="fb-share-button custom-fb-share-button" data-href="https://yourwebsite.com/current-page-url" data-layout="button_count"></div>
+</div>
+        <br><br>
+
+                <!-- Add the update and delete buttons here -->
+                {% if user.is_staff or user.is_superuser %}
+                <a href="{% url 'update_destination' destination.id %}" class="btn btn-primary mb-5">Update</a>
+                <a href="{% url 'delete_destination' destination.id %}" class="btn btn-danger mb-5">Delete</a>
+                {% endif %}
+        <br><br>
+
+    {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'add_review' destination.id %}">
+        {% csrf_token %}
+        <textarea class="input-review" name="review_text" placeholder="Write your review..."></textarea>
+        <input class="submit-button" type="submit" value="Submit Review">
+    </form>
+
+    {% else %}
+       <p>You must be logged in to post a review.</p>
+    {% endif %}
+    <br><br>
+
+      <h2 class="reviews-title">User reviews</h2>
+      <hr class="hr">
+      <br>
+      {% for review in reviews %}
+      <div>
+        <h6 class="user-reviews"><b>{{ review.user.username }}</b>:&nbsp; {{ review.review_text }}</h6>
+        <p>{{ reviewdate_posted|date:"F j, Y, g:i a" }}</p>
+       </div>
+      {% endfor %}
+
+    </div>
+    <div class="col-sm-4">
+        <div class="col-12"><h4 class="text-1">Related Sites</h4></div>
+        <div class="col-12 ">
+            {% for relat in relats %}
+            <div class="col-12">
+              <div class="card col-12 mb-2">
+                <img src="/{{ relat.3 }}" class="card-img-top img-fluid" alt="{{ relat.1 }}">
+                <div class="card-body">
+                  <h5 class="card-title">{{ relat.1 }}</h5>
+                  <p class="card-text">{{ relat.2 |truncatewords:21}}</p>
+                  <a href="{% url 'destination_detail' relat.0 %}" class="btn-block col-12 btn btn-danger">Go</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    var map = L.map('destination-map').setView([{{ destination.latitude }}, {{ destination.longitude }}], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([{{ destination.latitude }}, {{ destination.longitude }}]).addTo(map)
+        .bindPopup('{{ destination.title }}').openPopup();
+</script>
+{% endblock extra_js %}

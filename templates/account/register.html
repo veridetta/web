@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<style>
+    body {
+        background-image: url("{% static 'images/KANOMAN.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgba(0,0,0,0.6);
+        background-blend-mode: darken;
+    }
+    </style>
+
+<body>
+    <div class="container bg-white shadow-md p-5 col-7 mb-3">
+    <h1>User Registration</h1>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{form.username|as_crispy_field}}
+        <br> <br>
+        {{form.email|as_crispy_field}}
+        <br> <br>
+        {{form.password1|as_crispy_field}}
+        <br> <br>
+        {{form.password2|as_crispy_field}}
+        <br> <br>
+    <button type="submit" class="btn btn-dark navbar-btn text-white w-100 p-2"> &nbsp; Create account </button>
+
+    </form>
+    <br />
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+    <p><a href="{% url 'reset_password' %}">Forgot Password?</a></p>
+    <br>
+  </div>
+
+</body>
+
+{% endblock content %}

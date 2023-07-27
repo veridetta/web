@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-2 mb-3">
+
+    {% if user.is_staff or user.is_superuser %}
+    <h2>Create New Destination</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Simpan</button>
+    </form>
+    {% else %}
+    <p>Sorry, you do not have access to this page.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+<h1>New Destination Created</h1>
+<p>A new destination titled {{ destination.title }} has been created. Check it out!</p>
+<img src="{{ destination.image.url }}" alt="{{ destination.title }}">
+<p>{{ destination.description|truncatewords:50 }}...</p>
