@@ -307,7 +307,8 @@ def destination_detail(request, destination_id):
     print(images)
     print(related_destinations)
     # Mengambil data cuaca.
-    weather_data = get_weather_data(destination.latitude, destination.longitude, "5aa3cbbe4f08e84023a8e2b4cb638ba0")
+    weather_data = get_weather_data(destination.latitude, destination.longitude, "169b4b72a83a488c1d55f72a77521861")
+    print(weather_data)
     # Mengubah suhu dari Kelvin ke Celsius jika data suhu tersedia dalam data cuaca.
     if 'main' in weather_data and 'temp' in weather_data['main']:
         weather_data['main']['temp'] = weather_data['main']['temp'] - 273.15
@@ -321,6 +322,7 @@ def destination_detail(request, destination_id):
     'titles': titles,
     'descriptions': descriptions,
     'images': images,
+    'weather_data': weather_data
     })
 
 
